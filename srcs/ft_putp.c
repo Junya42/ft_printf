@@ -6,7 +6,7 @@
 /*   By: anremiki <anremiki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 04:53:52 by anremiki          #+#    #+#             */
-/*   Updated: 2021/10/17 05:16:04 by anremiki         ###   ########.fr       */
+/*   Updated: 2022/04/03 16:30:06 by anremiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,25 @@ int	ft_get_psize(unsigned long int n)
 	return (i);
 }
 
-void	ft_printaddress(unsigned long int n, char x)
+void	ft_printaddress(unsigned long int n, char x, int fd)
 {
 	if (n == 0)
 	{
-		ft_putstr("(nil)");
+		ft_putstr("(nil)", fd);
 		return ;
 	}
 	if (x-- == 'x')
-		ft_putstr("0x");
+		ft_putstr("0x", fd);
 	if (n > 15)
-		ft_printaddress(n / 16, x);
+		ft_printaddress(n / 16, x, fd);
 	if ((n % 16) < 10)
-		ft_putchar((n % 16) + '0');
+		ft_putchar((n % 16) + '0', fd);
 	else
-		ft_putchar((n % 16) + 87);
+		ft_putchar((n % 16) + 87, fd);
 }
 
-int	ft_returnaddress(unsigned long int n, char x)
+int	ft_returnaddress(unsigned long int n, char x, int fd)
 {
-	ft_printaddress(n, x);
+	ft_printaddress(n, x, fd);
 	return (ft_get_psize(n));
 }

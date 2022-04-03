@@ -6,7 +6,7 @@
 #    By: anremiki <anremiki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/17 03:23:44 by anremiki          #+#    #+#              #
-#    Updated: 2021/10/17 05:00:16 by anremiki         ###   ########.fr        #
+#    Updated: 2022/04/03 16:32:46 by anremiki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ INCLUDES	= ./includes/
 
 OBJS		= $(SRCS:.c=.o)
 
-CC			= gcc
+CC			= @gcc
 
-RM			= rm -f
+RM			= @rm -rf
 
 CFLAGS		= -Wall -Wextra -Werror -I $(INCLUDES)
 
@@ -29,12 +29,15 @@ NAME		= libftprintf.a
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-			ar rcs $(NAME) $(OBJS)
+			@echo "Building $(NAME)"
+			@ar rcs $(NAME) $(OBJS)
 
 clean:
+			@echo "Cleaning $(NAME) objs"
 			$(RM) $(OBJS)
 
-flcean:		clean
+fclean:		clean
+			@echo "Cleaning $(NAME)"
 			$(RM) $(NAME)
 
 re:			fclean $(NAME)

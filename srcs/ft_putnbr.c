@@ -6,7 +6,7 @@
 /*   By: anremiki <anremiki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 21:23:27 by anremiki          #+#    #+#             */
-/*   Updated: 2021/10/17 04:57:59 by anremiki         ###   ########.fr       */
+/*   Updated: 2022/04/03 16:29:41 by anremiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,19 @@ int	d_size(int n, int size)
 	return (size);
 }
 
-void	ft_putnbr(int n)
+void	ft_putnbr(int n, int fd)
 {
 	if (n >= 0)
 		n = -n;
 	else
-		ft_putchar('-');
+		ft_putchar('-', fd);
 	if (n < -9)
-		ft_putnbr(-(n / 10));
-	ft_putchar(-(n % 10) + '0');
+		ft_putnbr(-(n / 10), fd);
+	ft_putchar(-(n % 10) + '0', fd);
 }
 
-int	ft_putnbrsize(int n)
+int	ft_putnbrsize(int n, int fd)
 {
-	ft_putnbr(n);
+	ft_putnbr(n, fd);
 	return (d_size(n, 0));
 }

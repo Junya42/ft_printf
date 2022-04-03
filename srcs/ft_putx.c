@@ -6,7 +6,7 @@
 /*   By: anremiki <anremiki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 21:42:36 by anremiki          #+#    #+#             */
-/*   Updated: 2021/10/17 04:58:45 by anremiki         ###   ########.fr       */
+/*   Updated: 2022/04/03 16:25:23 by anremiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ int	ft_get_xsize(unsigned int n)
 	return (i);
 }
 
-void	ft_putx(unsigned int n, char x)
+void	ft_putx(unsigned int n, char x, int fd)
 {
 	if (n > 15)
-		ft_putx(n / 16, x);
+		ft_putx(n / 16, x, fd);
 	if ((n % 16) < 10)
-		ft_putchar((n % 16) + '0');
+		ft_putchar((n % 16) + '0', fd);
 	else
-		ft_putchar((n % 16) + x - 33);
+		ft_putchar((n % 16) + x - 33, fd);
 }
 
-int	ft_returnputx(unsigned int n, char x)
+int	ft_returnputx(unsigned int n, char x, int fd)
 {
-	ft_putx(n, x);
+	ft_putx(n, x, fd);
 	return (ft_get_xsize(n));
 }
